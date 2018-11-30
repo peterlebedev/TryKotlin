@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bv_set"
+            android:onClick="@{() -> viewModel.update()}"
             app:visibleGone="@{!viewModel.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>

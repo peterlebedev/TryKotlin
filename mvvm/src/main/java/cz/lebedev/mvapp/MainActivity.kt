@@ -29,9 +29,5 @@ class MainActivity : DaggerAppCompatActivity() {
 
         dataViewModel = ViewModelProviders.of(this, viewModelFactory).get(DataViewModel::class.java)
         viewDataBinding?.setViewModel(dataViewModel)
-
-        viewDataBinding!!.bvSet.setOnClickListener { _ ->
-            dataViewModel!!.setData(UUID.randomUUID().toString())
-        }
     }
 }
