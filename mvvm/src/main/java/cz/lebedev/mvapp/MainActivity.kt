@@ -13,7 +13,7 @@ import cz.lebedev.mvapp.databinding.ActivityMainBinding
 import javax.inject.Inject
 import java.util.UUID
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     var dataViewModel: DataViewModel? = null
 
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewDataBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
         dataViewModel = ViewModelProviders.of(this, viewModelFactory).get(DataViewModel::class.java)
         viewDataBinding!!.showProgress = true
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             viewDataBinding!!.showProgress = false
         })
 
-        viewDataBinding!!.bvSet.setOnClickListener { v ->
+        viewDataBinding!!.bvSet.setOnClickListener { _ ->
             viewDataBinding!!.showProgress = true
             dataViewModel!!.setData(UUID.randomUUID().toString())
         }
