@@ -25,15 +25,12 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
+        viewDataBinding?.setLifecycleOwner(this)
+
         dataViewModel = ViewModelProviders.of(this, viewModelFactory).get(DataViewModel::class.java)
-        viewDataBinding!!.showProgress = true
-        dataViewModel!!.getData().observe(this, Observer {
-            viewDataBinding?.data = it
-            viewDataBinding!!.showProgress = false
-        })
+        viewDataBinding?.setViewModel(dataViewModel)
 
         viewDataBinding!!.bvSet.setOnClickListener { _ ->
-            viewDataBinding!!.showProgress = true
             dataViewModel!!.setData(UUID.randomUUID().toString())
         }
     }

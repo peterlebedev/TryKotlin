@@ -5,12 +5,8 @@
 >
 <data>
     <variable
-            name="data"
-            type="String" />
-    <variable
-            name="showProgress"
-            type="boolean" />
-
+            name="viewModel"
+            type="cz.lebedev.mvapp.DataViewModel"/>
 
 </data>
 
@@ -24,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="sdfsdaf"
-            android:text="@{data}"
-            app:visibleGone="@{!showProgress}"
+            android:text="@{viewModel.data}"
+            app:visibleGone="@{!viewModel.loading}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
@@ -34,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bv_set"
-            app:visibleGone="@{!showProgress}"
+            app:visibleGone="@{!viewModel.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
     <ProgressBar
@@ -42,7 +38,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:visibleGone="@{showProgress}"
+            app:visibleGone="@{viewModel.loading}"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
